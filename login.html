@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#19392d">
+    <title>Sign in — QuickBill</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+    <div class="login-shell">
+        <section class="login-panel" aria-label="About QuickBill">
+            <div class="login-brand">
+                <img class="logo" src="logo.svg" alt="" aria-hidden="true">
+                <span><strong>QuickBill</strong><small>RECEIPT WORKSPACE</small></span>
+            </div>
+            <div class="login-pitch">
+                <p class="eyebrow">YOUR BUSINESS, IN GOOD ORDER</p>
+                <h1>Keep every sale moving.</h1>
+                <p>Create clear receipts, track inventory, and keep your daily billing in one simple workspace.</p>
+                <ul class="login-benefits">
+                    <li>Quick, polished receipts</li>
+                    <li>Inventory and low-stock tracking</li>
+                    <li>Searchable sales history</li>
+                </ul>
+            </div>
+            <p class="login-copyright">QuickBill · Simple billing, kept private on this device.</p>
+        </section>
+
+        <main class="login-main">
+            <section class="login-card" aria-labelledby="login-title">
+                <p class="eyebrow">WELCOME BACK</p>
+                <h2 id="login-title">Sign in to QuickBill</h2>
+                <p class="login-intro">Use the demo account to explore the receipt workspace.</p>
+                <form id="loginForm">
+                    <label for="loginEmail">Email address</label>
+                    <input id="loginEmail" name="email" type="email" autocomplete="username" value="demo@quickbill.app" required>
+                    <label for="loginPassword">Password</label>
+                    <input id="loginPassword" name="password" type="password" autocomplete="current-password" value="quickbill-demo" required>
+                    <button class="button button-primary login-submit" type="submit">Sign in</button>
+                </form>
+                <p id="loginFeedback" class="login-feedback" role="status" aria-live="polite"></p>
+                <div class="demo-access">
+                    <strong>Demo access</strong>
+                    <span>Email: <b>demo@quickbill.app</b></span>
+                    <span>Password: <b>quickbill-demo</b></span>
+                </div>
+                <p class="login-disclaimer">Demo only: sign-in is checked in this browser and does not provide real account security.</p>
+            </section>
+        </main>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>

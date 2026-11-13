@@ -1,5 +1,10 @@
 "use strict";
 
+const DEMO_SESSION_KEY = "quickbill.demo-session";
+if (sessionStorage.getItem(DEMO_SESSION_KEY) !== "authenticated") {
+    window.location.replace("login.html");
+}
+
 const STORAGE_KEYS = {
     receipts: "ledgerly.receipts.v1",
     products: "ledgerly.products.v1",
@@ -689,6 +694,11 @@ function initialize() {
     renderInventory();
     renderHistory();
 }
+
+get("signOut").addEventListener("click", () => {
+    sessionStorage.removeItem(DEMO_SESSION_KEY);
+    window.location.replace("login.html");
+});
 
 function syncInitialCatalog() {
     const names = new Set(inventory.map((product) => product.name.toLocaleLowerCase()));
