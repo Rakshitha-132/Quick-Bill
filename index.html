@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101b2e">
+    <title>QuickBill — Receipt workspace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="#dashboard" aria-label="QuickBill home">
+            <span class="logo" aria-hidden="true">Q</span>
+            <span><strong>QuickBill</strong><small>RECEIPT WORKSPACE</small></span>
+        </a>
+        <div class="topbar-note"><span class="online-dot"></span> Your billing, in good order</div>
+    </header>
+
+    <div class="dashboard" id="dashboard">
+        <nav class="sidebar" aria-label="Main navigation">
+            <p class="nav-label">WORKSPACE</p>
+            <a class="active" href="#dashboard">Overview</a>
+            <a href="#customer">New receipt</a>
+            <a href="#inventory">Inventory</a>
+            <a href="#history">Receipt history</a>
+            <a href="#settings">Store settings</a>
+        </nav>
+
+        <main class="main-content">
+            <section class="welcome" aria-labelledby="page-title">
+                <div>
+                    <p class="eyebrow">BILLING OVERVIEW</p>
+                    <h1 id="page-title">Make every sale count.</h1>
+                    <p class="welcome-copy">Create a receipt, keep your records close, and get back to business.</p>
+                </div>
+                <button id="newReceipt" class="button button-quiet" type="button">＋ New receipt</button>
+            </section>
+
+            <section class="stats" aria-label="Current receipt summary">
+                <article class="stat-card">
+                    <span class="stat-icon">▦</span><p>Items on this receipt</p>
+                    <strong id="productCount">0</strong>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-icon">₹</span><p>Current bill total</p>
+                    <strong id="dashboardTotal">₹0.00</strong>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-icon">✓</span><p>Receipt status</p>
+                    <strong id="receiptStatus">Draft</strong>
+                </article>
+            </section>
+
+            <div class="content-grid">
+                <section class="panel editor-panel" id="customer" aria-labelledby="editor-title">
+                    <div class="panel-heading">
+                        <div><p class="eyebrow">DETAILS</p><h2 id="editor-title">Build your receipt</h2></div>
+                        <span class="step-tag">01 — 02</span>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Customer</h3>
+                        <label for="customerName">Customer name</label>
+                        <input type="text" id="customerName" name="customerName" autocomplete="name" maxlength="100" placeholder="e.g. Aanya Sharma">
+                        <label for="phone">Mobile number</label>
+                        <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" maxlength="16" placeholder="+91 98765 43210" aria-describedby="phoneHint">
+                        <small class="field-hint" id="phoneHint">Indian mobile number, with or without the +91 country code.</small>
+                    </div>
+
+                    <div class="form-section product-form">
+                        <h3>Products <span class="subtle">Add items to this bill</span></h3>
+                        <label for="productName">Product name</label>
+                        <input type="text" id="productName" list="productCatalog" maxlength="100" placeholder="Search or enter a product">
+                        <datalist id="productCatalog"></datalist>
+                        <div class="input-row">
+                            <div>
+                                <label for="quantity">Quantity</label>
+                                <input type="number" id="quantity" min="1" max="1000000" step="1" inputmode="numeric" placeholder="1">
+                            </div>
+                            <div>
+                                <label for="price">Unit price <span class="subtle">(₹)</span></label>
+                                <input type="number" id="price" min="0.01" step="0.01" inputmode="decimal" placeholder="0.00">
+                            </div>
+                        </div>
+                        <button id="addItem" class="button button-secondary full-width" type="button">＋ Add to receipt</button>
+                    </div>
+                    <div class="form-section">
+                        <h3>Adjustments</h3>
+                        <label for="discountType">Discount</label>
+                        <div class="input-row">
+                            <select id="discountType" aria-label="Discount type">
+                                <option value="none">No discount</option>
+                                <option value="percent">Percentage (%)</option>
+                                <option value="fixed">Fixed amount (₹)</option>
+                            </select>
+                            <input type="number" id="discountValue" min="0" step="0.01" value="0" aria-label="Discount value">
+                        </div>
+                        <label for="taxRate">Tax rate (%)</label>
+                        <input type="number" id="taxRate" min="0" max="100" step="0.01" value="0" aria-describedby="taxHint">
+                        <small class="field-hint" id="taxHint">Tax is optional and applied after discount.</small>
+                    </div>
+                    <p class="privacy-note">Receipts and product suggestions are saved only in this browser.</p>
+                </section>
+
+                <section class="panel preview-panel" id="receipt" aria-labelledby="preview-title">
+                    <div class="panel-heading preview-title">
+                        <div><p class="eyebrow">LIVE PREVIEW</p><h2 id="preview-title">Receipt</h2></div>
+                        <span class="receipt-badge" id="receiptBadge">DRAFT</span>
+                    </div>
+                    <article class="receipt-paper" id="receiptPaper" aria-label="Receipt preview">
+                        <div class="store-heading">
+                            <span class="store-mark" aria-hidden="true">Q</span>
+                            <h2 id="displayStoreName">YOUR STORE</h2>
+                            <p id="displayStoreAddress"></p>
+                            <p id="displayStoreContact"></p>
+                            <p id="displayStoreGstin"></p>
+                            <p>Payment receipt</p>
+                        </div>
+                        <div class="receipt-meta">
+                            <p><span>Receipt</span><strong id="receiptNumber">Draft</strong></p>
+                            <p><span>Date</span><strong id="receiptDate">—</strong></p>
+                            <p><span>Customer</span><strong id="displayName">—</strong></p>
+                            <p><span>Mobile</span><strong id="displayPhone">—</strong></p>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th scope="col">Item</th><th scope="col">Qty</th><th scope="col">Price</th><th scope="col">Amount</th><th class="screen-only" scope="col"><span class="visually-hidden">Actions</span></th></tr></thead>
+                                <tbody id="receiptItems"></tbody>
+                            </table>
+                        </div>
+                        <div class="empty-state" id="emptyItems">Your items will appear here.</div>
+                        <div class="receipt-totals">
+                            <p><span>Subtotal</span><strong id="subtotal">₹0.00</strong></p>
+                            <p><span>Discount</span><strong id="discountAmount">−₹0.00</strong></p>
+                            <p><span id="taxLabel">Tax (0%)</span><strong id="taxAmount">₹0.00</strong></p>
+                            <div class="total-area"><span>Total due</span><strong id="grandTotal">₹0.00</strong></div>
+                        </div>
+                        <p class="thank-you">Thank you for shopping with us.</p>
+                    </article>
+                    <div class="receipt-actions">
+                        <button id="generateReceipt" class="button button-primary" type="button">Save receipt</button>
+                        <button id="printReceipt" class="button button-quiet" type="button" disabled>Print / Save as PDF</button>
+                    </div>
+                    <p class="field-hint">Opens your browser’s print dialog; choose “Save as PDF” there if available.</p>
+                    <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+                </section>
+            </div>
+
+            <section class="panel inventory-panel" id="inventory" aria-labelledby="inventory-title">
+                <div class="panel-heading">
+                    <div><p class="eyebrow">PRODUCT CATALOG</p><h2 id="inventory-title">Inventory</h2></div>
+                    <span class="history-count" id="inventoryCount">0 products</span>
+                </div>
+                <form id="inventoryForm" class="inventory-form">
+                    <div><label for="inventoryName">Product name</label><input id="inventoryName" maxlength="100" required></div>
+                    <div><label for="inventoryStock">Stock quantity</label><input id="inventoryStock" type="number" min="0" max="1000000" step="1" value="0" required></div>
+                    <div><label for="inventoryLowStock">Low-stock alert at</label><input id="inventoryLowStock" type="number" min="0" max="1000000" step="1" value="5" required></div>
+                    <button class="button button-secondary" type="submit">Add product</button>
+                </form>
+                <div id="inventoryList" class="inventory-list"></div>
+                <p id="inventoryEmpty" class="history-empty">Add products here to track stock and prevent overselling.</p>
+            </section>
+
+            <section class="panel history-panel" id="history" aria-labelledby="history-title">
+                <div class="panel-heading">
+                    <div><p class="eyebrow">YOUR RECORDS</p><h2 id="history-title">Recent receipts</h2></div>
+                    <span class="history-count" id="historyCount">0 saved</span>
+                </div>
+                <div class="history-filters">
+                    <div><label for="historySearch">Customer or receipt ID</label><input id="historySearch" type="search" placeholder="Search receipts"></div>
+                    <div><label for="historyFrom">From date</label><input id="historyFrom" type="date"></div>
+                    <div><label for="historyTo">To date</label><input id="historyTo" type="date"></div>
+                    <div><label for="historyMin">Min amount (₹)</label><input id="historyMin" type="number" min="0" step="0.01"></div>
+                    <div><label for="historyMax">Max amount (₹)</label><input id="historyMax" type="number" min="0" step="0.01"></div>
+                    <button id="exportCsv" class="button button-quiet" type="button">Export filtered CSV</button>
+                </div>
+                <div class="history-list" id="receiptHistory"></div>
+                <p class="history-empty" id="historyEmpty">Saved receipts will show up here.</p>
+            </section>
+
+            <section class="panel settings-panel" id="settings" aria-labelledby="settings-title">
+                <div class="panel-heading">
+                    <div><p class="eyebrow">RECEIPT CUSTOMIZATION</p><h2 id="settings-title">Store profile</h2></div>
+                </div>
+                <form id="settingsForm" class="settings-form">
+                    <div><label for="storeName">Store name</label><input id="storeName" maxlength="100" placeholder="Your store"></div>
+                    <div><label for="storeAddress">Address</label><input id="storeAddress" maxlength="200" placeholder="Street, city, PIN"></div>
+                    <div><label for="storeContact">Contact details</label><input id="storeContact" maxlength="100" placeholder="Phone or email"></div>
+                    <div><label for="storeGstin">GSTIN (optional)</label><input id="storeGstin" maxlength="15" placeholder="GSTIN"></div>
+                    <div><label for="defaultTaxRate">Default tax rate (%)</label><input id="defaultTaxRate" type="number" min="0" max="100" step="0.01" value="0"></div>
+                    <button class="button button-primary" type="submit">Save profile</button>
+                </form>
+            </section>
+
+            <footer>QuickBill · Simple billing, kept private on this device.</footer>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
