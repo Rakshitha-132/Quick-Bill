@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#101b2e">
     <title>QuickBill — Receipt workspace</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="topbar">
         <a class="brand" href="#dashboard" aria-label="QuickBill home">
-            <span class="logo" aria-hidden="true">Q</span>
+            <img class="logo" src="logo.svg" alt="" aria-hidden="true">
             <span><strong>QuickBill</strong><small>RECEIPT WORKSPACE</small></span>
         </a>
         <div class="topbar-note"><span class="online-dot"></span> Your billing, in good order</div>
@@ -30,8 +31,8 @@
             <section class="welcome" aria-labelledby="page-title">
                 <div>
                     <p class="eyebrow">BILLING OVERVIEW</p>
-                    <h1 id="page-title">Make every sale count.</h1>
-                    <p class="welcome-copy">Create a receipt, keep your records close, and get back to business.</p>
+                    <h1 id="page-title">Billing, made simple.</h1>
+                    <p class="welcome-copy">Create polished receipts, keep inventory in check, and find every sale when you need it.</p>
                 </div>
                 <button id="newReceipt" class="button button-quiet" type="button">＋ New receipt</button>
             </section>
@@ -109,7 +110,7 @@
                     </div>
                     <article class="receipt-paper" id="receiptPaper" aria-label="Receipt preview">
                         <div class="store-heading">
-                            <span class="store-mark" aria-hidden="true">Q</span>
+                            <img class="store-mark" src="logo.svg" alt="" aria-hidden="true">
                             <h2 id="displayStoreName">YOUR STORE</h2>
                             <p id="displayStoreAddress"></p>
                             <p id="displayStoreContact"></p>

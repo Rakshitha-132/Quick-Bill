@@ -514,11 +514,79 @@ footer { padding: 21px 0 3px; color: #a0a9b7; text-align: center; font-size: 10p
     .history-filters input { font-size: 14px; }
     footer { font-size: 12px; }
 
+    .brand { gap: 13px; }
+    .logo {
+        display: block;
+        width: 44px;
+        height: 44px;
+        border-radius: 13px;
+        background: transparent;
+        object-fit: contain;
+    }
+
+    .store-mark {
+        display: block;
+        width: 36px;
+        height: 36px;
+        margin: 0 auto 9px;
+        border-radius: 10px;
+        background: transparent;
+        object-fit: contain;
+    }
+
+    .welcome {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        min-height: 178px;
+        padding: 30px 34px;
+        border-radius: 19px;
+        background:
+            radial-gradient(circle at 87% 20%, rgba(180, 213, 177, .2), transparent 12rem),
+            linear-gradient(115deg, #19392d 0%, #285c44 67%, #347259 100%);
+        box-shadow: 0 14px 32px rgba(27, 62, 43, .14);
+    }
+
+    .welcome::after {
+        position: absolute;
+        z-index: -1;
+        top: -146px;
+        right: -72px;
+        width: 330px;
+        height: 330px;
+        border: 1px solid rgba(235, 244, 229, .17);
+        border-radius: 50%;
+        box-shadow: 0 0 0 28px rgba(235, 244, 229, .045), 0 0 0 58px rgba(235, 244, 229, .035);
+        content: "";
+    }
+
+    .welcome > div { position: relative; z-index: 1; }
+    .welcome .eyebrow { color: #c3d9c6; }
+    .welcome h1 { color: #fff; }
+    .welcome-copy { max-width: 590px; color: #dce8dd; }
+    .welcome > .button {
+        position: relative;
+        z-index: 1;
+        min-height: 46px;
+        padding: 0 19px;
+        border-color: #efc982;
+        background: #efc982;
+        color: #244332;
+        box-shadow: 0 6px 15px rgba(15, 41, 28, .18);
+    }
+
+    .welcome > .button:hover:not(:disabled) {
+        border-color: #f5d89e;
+        background: #f5d89e;
+    }
+
     @media (max-width: 560px) {
         .topbar-note { font-size: 0; }
         .brand strong { font-size: 19px; }
         .welcome h1 { font-size: 28px; }
         .welcome-copy { font-size: 13px; }
+        .welcome { min-height: 0; padding: 22px 19px; border-radius: 15px; }
+        .welcome::after { right: -190px; }
         .stat-card { min-height: 104px; }
         .stat-card p { font-size: 11px; }
         .stat-card strong { font-size: 21px; }
