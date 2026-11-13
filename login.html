@@ -32,21 +32,13 @@
             <section class="login-card" aria-labelledby="login-title">
                 <p class="eyebrow">WELCOME BACK</p>
                 <h2 id="login-title">Sign in to QuickBill</h2>
-                <p class="login-intro">Use the demo account to explore the receipt workspace.</p>
-                <form id="loginForm">
-                    <label for="loginEmail">Email address</label>
-                    <input id="loginEmail" name="email" type="email" autocomplete="username" value="demo@quickbill.app" required>
-                    <label for="loginPassword">Password</label>
-                    <input id="loginPassword" name="password" type="password" autocomplete="current-password" value="quickbill-demo" required>
-                    <button class="button button-primary login-submit" type="submit">Sign in</button>
-                </form>
-                <p id="loginFeedback" class="login-feedback" role="status" aria-live="polite"></p>
+                <p class="login-intro">Open the public demo workspace. No account or password is needed.</p>
+                <button id="openDemo" class="button button-primary login-submit" type="button">Enter demo workspace</button>
                 <div class="demo-access">
-                    <strong>Demo access</strong>
-                    <span>Email: <b>demo@quickbill.app</b></span>
-                    <span>Password: <b>quickbill-demo</b></span>
+                    <strong>Public demo</strong>
+                    <span>Explore receipts, inventory, and sales history.</span>
                 </div>
-                <p class="login-disclaimer">Demo only: sign-in is checked in this browser and does not provide real account security.</p>
+                <p class="login-disclaimer">This demo entry does not authenticate users or secure browser-stored data.</p>
             </section>
         </main>
     </div>
